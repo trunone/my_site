@@ -1,0 +1,43 @@
+---
+layout: post
+title: 手動編譯 git 原始碼與安裝 (CentOS 5)
+date: '2013-04-11T00:54:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- CentOS
+- Git
+modified_time: '2013-04-11T00:54:54.343+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-3663959989111345739
+blogger_orig_url: http://trunone.blogspot.com/2013/04/git-centos-5.html
+---
+
+使用 Yum 移除及安裝所需套件：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">#</span> yum remove curl curl-devel
+<span style="color: #c65d09; font-weight: bold">#</span> yum install zlib zlib-devel libssh2 libssh2-devel openssl openssl-devel expat expat-devel
+</pre></div><br />
+下載 cURL 原始碼並編譯及安裝：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">#</span> <span style="color: #007020">cd</span> /usr/local/src/
+<span style="color: #c65d09; font-weight: bold">#</span> wget <span style="background-color: #fff0f0">&quot;http://curl.haxx.se/download/curl-7.21.3.tar.gz&quot;</span>
+<span style="color: #c65d09; font-weight: bold">#</span> tar xzf curl-7.21.3.tar.gz
+<span style="color: #c65d09; font-weight: bold">#</span> rm curl-7.21.3.tar.gz
+<span style="color: #c65d09; font-weight: bold">#</span> ln -s curl-7.21.3 curl
+<span style="color: #c65d09; font-weight: bold">#</span> <span style="color: #007020">cd </span>curl/
+<span style="color: #c65d09; font-weight: bold">#</span> make clean
+<span style="color: #c65d09; font-weight: bold">#</span> ./configure --libdir<span style="color: #303030">=</span>/usr/lib64 --with-libssh2 --enable-shared --with-ssl --prefix<span style="color: #303030">=</span>/usr
+<span style="color: #c65d09; font-weight: bold">#</span> make
+<span style="color: #c65d09; font-weight: bold">#</span> make install
+</pre></div><br />
+下載 git 原始碼並編譯及安裝：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">#</span> <span style="color: #007020">cd</span> /usr/local/src
+<span style="color: #c65d09; font-weight: bold">#</span> wget <span style="background-color: #fff0f0">&quot;https://git-core.googlecode.com/files/git-1.8.2.1.tar.gz&quot;</span>
+<span style="color: #c65d09; font-weight: bold">#</span> bunzip2 git-1.7.4.tar.bz2
+<span style="color: #c65d09; font-weight: bold">#</span> tar xf git-1.7.4.tar
+<span style="color: #c65d09; font-weight: bold">#</span> rm git-1.7.4.tar
+<span style="color: #c65d09; font-weight: bold">#</span> ln -s git-1.7.4 git
+<span style="color: #c65d09; font-weight: bold">#</span> <span style="color: #007020">cd </span>git/
+<span style="color: #c65d09; font-weight: bold">#</span> make clean
+<span style="color: #c65d09; font-weight: bold">#</span> ./configure --with-curl --with-openssl --with-expat
+<span style="color: #c65d09; font-weight: bold">#</span> make
+<span style="color: #c65d09; font-weight: bold">#</span> make install
+</pre></div>

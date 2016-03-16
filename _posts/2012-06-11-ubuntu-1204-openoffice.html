@@ -1,0 +1,25 @@
+---
+layout: post
+title: 換裝 OpenOffice 3.4 (Ubuntu 12.04)
+date: '2012-06-11T15:11:00.000+08:00'
+author: Chih-En Wu
+tags: 
+modified_time: '2013-03-16T01:56:19.980+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-7908254567021365422
+blogger_orig_url: http://trunone.blogspot.com/2012/06/ubuntu-1204-openoffice.html
+---
+
+下載 OpenOffice 3.4: <a href=http://www.openoffice.org/download/index.html>http://www.openoffice.org/download/index.html</a><br />
+<br />
+移除 LibreOffice :<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> sudo apt-get purge libreoffice*
+</pre></div><br />
+解壓縮 OpenOffice 3.4:<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> tar zxvf FILENAME
+</pre></div><br />
+安裝 OpenOffice 3.4:<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> <span style="color: #007020">cd </span>INSTALL_FOLDER/DEBS
+<span style="color: #c65d09; font-weight: bold">$</span> sudo dpkg -i *.deb
+<span style="color: #c65d09; font-weight: bold">$</span> <span style="color: #007020">cd </span>desktop-integration
+<span style="color: #c65d09; font-weight: bold">$</span> sudo dpkg -i *.deb
+</pre></div><br />

@@ -1,0 +1,38 @@
+---
+layout: post
+title: 在Ubuntu 11.04安裝Ruby on Rails 3環境
+date: '2011-08-16T21:28:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+- Ruby
+modified_time: '2011-11-01T14:02:20.433+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-818181043466213628
+blogger_orig_url: http://trunone.blogspot.com/2011/08/ubuntu-1104ruby-on-rails-3.html
+---
+
+雖然Ubuntu下可以很方便的直接安裝rails這個套件<br />
+<br />
+來完成整個RoR環境的安裝 但是它的Rails卻是不是最新的3.0.x<br />
+<br />
+因此我們要用手動的方法來安裝<br />
+<br />
+首先安裝完整版的 Ruby 套件：<br />
+<code class="syntax bash">$ sudo apt-get install ruby-full</code><br />
+<br />
+接下來安裝 RubyGems：<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;word-wrap: break-word;"><pre style="margin: 0; line-height: 125%"><span style="color: #24909d">cd</span> /tmp/
+wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.8.tgz
+tar xvfz rubygems-1.8.8.tgz
+<span style="color: #24909d">cd </span>rubygems-1.8.8
+sudo ruby setup.rb
+sudo gem update --system <span style="color: #999999; font-style: italic">#Update RubyGems to the newest</span>
+sudo ln -s /usr/bin/gem1.8 /usr/bin/gem
+</pre></div><br />
+<br />
+最後就是安裝 Rails：<br />
+<code class="syntax bash">$ sudo gem install rails</code><br />
+<br />
+RoR預設使用的資料庫是Sqlite 要用RubyGems安裝前 要先在Ubutnu裝好它的開發套件<br />
+<code class="syntax bash">$ sudo apt-get install libsqlite3-dev</code>

@@ -1,0 +1,58 @@
+---
+layout: post
+title: 從隨身碟安裝 Windows 7 或 Windows Server 2008 R2
+date: '2011-04-30T04:31:00.006+08:00'
+author: Chih-En Wu
+tags:
+- Windows
+modified_time: '2012-09-25T16:28:01.293+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-9109599302061213168
+blogger_orig_url: http://trunone.blogspot.com/2011/04/windows-7-windows-server-2008-r2.html
+---
+
+微軟官方有提供一個工具 不過它一定要吃 ISO 檔 沒辦法從光碟來做<br />
+<br />
+這裡有個簡單的方法：<br />
+<br />
+1. 首先開啟「命令提示字元」 (記得用 Administrator 的權限開)<br />
+<br />
+2. 輸入<code class="syntax text">Y:</code> 來切到你的光碟機 Y為光碟機代號<br />
+<br />
+3. 輸入下面兩道指令 X為隨身碟代號<br />
+<pre class="syntax text">.\boot\bootsect.exe /NT60 X:
+xcopy *.* /s /e /f X:\
+</pre>看你隨身碟的速度而定 會複製一段時間<br />
+<br />
+完成後就能用來安裝了！<br />
+<br />
+<span class="Apple-style-span" style="color: red;">UPDATE:</span><br />
+<br />
+如果上述步驟無法成功的話或是使用SD讀卡機<br />
+<br />
+可以試試以下的方法<br />
+<br />
+1. 一樣使用 Administrator 的權限開啟「命令提示字元」<br />
+<br />
+2. 輸入<code class="syntax text">diskpart</code> 會進入<code class="syntax text">DISKPART&gt;</code>的模式<br />
+<br />
+3. 輸入<code class="syntax text">list disk</code> 會秀出所有的磁碟編號 可以用容量來看出隨身碟或SD卡是哪一個<br />
+<br />
+4. 輸入<code class="syntax text">select disk #</code> 來選擇你的磁碟 #是磁碟編號<br />
+<br />
+5. 輸入<code class="syntax text">clean</code> 這個指令會將磁碟清空<br />
+<br />
+6. 輸入<code class="syntax text">create partition primary</code> 重新建立一個分割區<br />
+<br />
+7. 輸入<code class="syntax text">select partition 1</code> 選擇剛建立的分割區<br />
+<br />
+8. 輸入<code class="syntax text">active</code> 將其設定為可開機<br />
+<br />
+9. 輸入<code class="syntax text">format fs=fat32</code> 將它格式化成FAT32<br />
+<br />
+10. 輸入<code class="syntax text">assign letter=Y</code> 將它掛到一個磁碟代號 這裡是用Y<br />
+<br />
+11. 輸入<code class="syntax text">exit</code> 離開這個程式<br />
+<br />
+接下來一樣是用<code class="syntax text">xcopy X:\*.* /s /e /f Y:\</code>來複製檔案<br />
+<br />
+X是光碟機 Y是你的隨身碟或SD卡 這樣就完成了！

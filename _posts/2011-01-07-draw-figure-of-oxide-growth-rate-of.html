@@ -1,0 +1,70 @@
+---
+layout: post
+title: Draw the figure of Oxide growth rate of Silicon
+date: '2011-01-07T19:27:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Programming
+- MATLAB
+modified_time: '2012-03-26T11:18:58.718+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-9126162865693865765
+blogger_orig_url: http://trunone.blogspot.com/2011/01/draw-figure-of-oxide-growth-rate-of.html
+---
+{% highlight matlab %}
+%Constant
+k = 8.6173 * 10^(-5); %boltzman's constant - normalized to electron charge
+%
+C1wet100=3.86 * 10^2;
+C2wet111=1.63 * 10^8;
+%
+C1dry100=7.72 * 10^2;
+C2dry111=6.23 * 10^6;
+%
+C2wet100=C2wet111/1.7;
+C2dry100=C2dry111/1.7;
+%
+E1wet=0.78;
+E2wet=2.05;
+%
+E1dry=1.23;
+E2dry=2.00;
+%
+%Use silicon 100 wet
+E1 = E1wet;
+E2 = E2wet;
+C1 = C1wet100;
+C2 = C2wet100;
+%
+%Temperature
+Temp = 850:50:1200;
+Temp = Temp+273;
+%
+%Calculate A and B
+P = C1.*exp(-(E1./(k.*Temp)));
+L = C2.*exp(-(E2./(k.*Temp)));
+A = P./L;
+B = P;
+%
+x = 0.01:0.001:10; %EndThickness
+d0 = 0; %StartThickness;
+%
+%Calculate time
+time1 = ((x.*x-d0^2) + (x-d0).*A(1))./B(1);
+time2 = ((x.*x-d0^2) + (x-d0).*A(2))./B(2);
+time3 = ((x.*x-d0^2) + (x-d0).*A(3))./B(3);
+time4 = ((x.*x-d0^2) + (x-d0).*A(4))./B(4);
+time5 = ((x.*x-d0^2) + (x-d0).*A(5))./B(5);
+time6 = ((x.*x-d0^2) + (x-d0).*A(6))./B(6);
+time7 = ((x.*x-d0^2) + (x-d0).*A(7))./B(7);
+time8 = ((x.*x-d0^2) + (x-d0).*A(8))./B(8);
+%
+%Draw figure
+loglog(time1,x,time2,x,time3,x,time4,x,...
+time5,x,time6,x,time7,x,time8,x);
+axis([0.05 20 0.01 10]);
+h = legend('850^C','900^C','950^C','1000^C',...
+'1050^C','1100^C','1150^C','1200^C',2);
+set(h,'Interpreter','none');
+xlabel('Oxidation time (hour)');
+ylabel('Oxide thickness (um)');
+{% endhighlight %}

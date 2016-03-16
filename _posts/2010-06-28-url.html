@@ -1,0 +1,40 @@
+---
+layout: post
+title: URL編碼/解碼
+date: '2010-06-28T18:02:00.003+08:00'
+author: Chih-En Wu
+tags:
+- Programming
+- Internet
+modified_time: '2011-11-01T13:45:39.755+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-2983934604292788060
+blogger_orig_url: http://trunone.blogspot.com/2010/06/url.html
+---
+
+有時候複製的網址裡有包含ASCII以外的字元時<br />
+<br />
+就會被換成%XX%XX……一類的編碼<br />
+<br />
+把下面的HTML原始瑪存起來 便可以用來轉換<br />
+<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">&lt;html&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;head&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;title&gt;</span>URL Decode/Encode<span style="color: #6ab825; font-weight: bold">&lt;/title&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;/head&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;body&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;center&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;font</span> <span style="color: #bbbbbb">size=</span><span style="color: #ed9d13">+2</span><span style="color: #6ab825; font-weight: bold">&gt;</span>URL Decode/Encode<span style="color: #6ab825; font-weight: bold">&lt;/font&gt;&lt;br</span> <span style="color: #6ab825; font-weight: bold">/&gt;</span>
+URL to Decode:
+<span style="color: #6ab825; font-weight: bold">&lt;TEXTAREA</span> <span style="color: #bbbbbb">ID=</span><span style="color: #ed9d13">&quot;String1&quot;</span> <span style="color: #bbbbbb">ROWS=</span><span style="color: #ed9d13">&quot;10&quot;</span> <span style="color: #bbbbbb">COLS=</span><span style="color: #ed9d13">&quot;30&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;&lt;/TEXTAREA&gt;</span>
+URL Decoded:
+<span style="color: #6ab825; font-weight: bold">&lt;TEXTAREA</span> <span style="color: #bbbbbb">ID=</span><span style="color: #ed9d13">&quot;String2&quot;</span> <span style="color: #bbbbbb">ROWS=</span><span style="color: #ed9d13">&quot;10&quot;</span> <span style="color: #bbbbbb">COLS=</span><span style="color: #ed9d13">&quot;30&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;&lt;/TEXTAREA&gt;&lt;br</span> <span style="color: #6ab825; font-weight: bold">/&gt;</span>
+URL to Encode:
+<span style="color: #6ab825; font-weight: bold">&lt;TEXTAREA</span> <span style="color: #bbbbbb">ID=</span><span style="color: #ed9d13">&quot;String3&quot;</span> <span style="color: #bbbbbb">ROWS=</span><span style="color: #ed9d13">&quot;10&quot;</span> <span style="color: #bbbbbb">COLS=</span><span style="color: #ed9d13">&quot;30&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;&lt;/TEXTAREA&gt;</span>
+URL Encoded:
+<span style="color: #6ab825; font-weight: bold">&lt;TEXTAREA</span> <span style="color: #bbbbbb">ID=</span><span style="color: #ed9d13">&quot;String4&quot;</span> <span style="color: #bbbbbb">ROWS=</span><span style="color: #ed9d13">&quot;10&quot;</span> <span style="color: #bbbbbb">COLS=</span><span style="color: #ed9d13">&quot;30&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;&lt;/TEXTAREA&gt;&lt;br</span> <span style="color: #6ab825; font-weight: bold">/&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;INPUT</span> <span style="color: #bbbbbb">TYPE=</span><span style="color: #ed9d13">&quot;button&quot;</span> <span style="color: #bbbbbb">ID=</span><span style="color: #ed9d13">&quot;Decode&quot;</span> <span style="color: #bbbbbb">value=</span><span style="color: #ed9d13">&quot;Decode&quot;</span> <span style="color: #bbbbbb">onClick=</span><span style="color: #ed9d13">&quot;javascript:String2.value=decodeURI(String1.value);&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;INPUT</span> <span style="color: #bbbbbb">TYPE=</span><span style="color: #ed9d13">&quot;button&quot;</span> <span style="color: #bbbbbb">ID=</span><span style="color: #ed9d13">&quot;Encode&quot;</span> <span style="color: #bbbbbb">value=</span><span style="color: #ed9d13">&quot;Encode&quot;</span> <span style="color: #bbbbbb">onClick=</span><span style="color: #ed9d13">&quot;javascript:String4.value=encodeURI(String3.value);&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;/center&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;/html&gt;</span>
+</pre></div>

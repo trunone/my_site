@@ -1,0 +1,40 @@
+---
+layout: post
+title: 編譯 vim 7.3 與 vimgdb
+date: '2013-05-07T01:29:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+modified_time: '2013-05-07T01:29:29.109+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-1099786578408900095
+blogger_orig_url: http://trunone.blogspot.com/2013/05/vim-73-vimgdb.html
+---
+
+安裝所需套件：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> sudo apt-get install libreadline6-dev liblua5.1-0-dev liblua5.1-0-dev
+</pre></div><br />
+使用 git clone vimgdb：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> git clone git://github.com/larrupingpig/vimgdb-for-vim7.3.git
+</pre></div><br />
+將 vimgdb patch 進 vim：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> patch -p0 &lt; vimgdb-for-vim7.3/vim73.patch
+</pre></div><br />
+修改<i>if_lua.c</i>：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #507090">#include &lt;lua.h&gt;</span>
+<span style="color: #507090">#include &lt;lualib.h&gt;</span>
+<span style="color: #507090">#include &lt;lauxlib.h&gt;</span>
+</pre></div><br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #507090">#include &lt;lua5.1/lua.h&gt;</span>
+<span style="color: #507090">#include &lt;lua5.1/lualib.h&gt;</span>
+<span style="color: #507090">#include &lt;lua5.1/lauxlib.h&gt;</span>
+</pre></div><br />
+修改<i>auto/configure</i>：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #906030">LUA_LIBS</span><span style="color: #303030">=</span><span style="background-color: #fff0f0">&quot;-L${vi_cv_path_lua_pfx}/lib -llua&quot;</span>
+</pre></div><br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #906030">LUA_LIBS</span><span style="color: #303030">=</span><span style="background-color: #fff0f0">&quot;-L${vi_cv_path_lua_pfx}/lib -llua5.1&quot;</span>
+</pre></div><br />
+編譯與安裝：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> make
+<span style="color: #c65d09; font-weight: bold">%</span> sudo make install
+</pre></div>

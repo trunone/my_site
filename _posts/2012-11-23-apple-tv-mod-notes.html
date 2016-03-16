@@ -1,0 +1,26 @@
+---
+layout: post
+title: 網樂通改機雜記
+date: '2012-11-23T20:58:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- NextVOD
+modified_time: '2012-11-24T00:03:15.246+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-4553228801358497085
+blogger_orig_url: http://trunone.blogspot.com/2012/11/blog-post.html
+---
+
+想玩的 Professional 一點的話 就要從機板上接 UART 出來看 Console 的訊息<br />
+<br />
+這裡要注意的是 這個 UART 是 TTL 的訊號 而不是 RS-232 的 所以買 USB 轉接線的時候要注意<br />
+<br />
+在按任意鍵中斷 uboot 開機程序後 要改變 bootargs 來進入 shell<br />
+<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">setenv bootargs <span style="color: #906030">console</span><span style="color: #303030">=</span>ttyAS0,115200 <span style="color: #906030">root</span><span style="color: #303030">=</span>8:2 rw <span style="color: #906030">rootfstype</span><span style="color: #303030">=</span>ext3 <span style="color: #606060; font-weight: bold; background-color: #fff0f0">\</span>
+rw <span style="color: #906030">rootflags</span><span style="color: #303030">=</span><span style="color: #906030">data</span><span style="color: #303030">=</span>journal <span style="color: #906030">nwhwconf</span><span style="color: #303030">=</span>device:eth0,hwaddr:10:08:E2:12:06:BD <span style="color: #606060; font-weight: bold; background-color: #fff0f0">\</span>
+phyaddr:0,watchdog:5000 <span style="color: #906030">mem</span><span style="color: #303030">=</span>120M <span style="color: #906030">bigphysarea</span><span style="color: #303030">=</span>2048 <span style="color: #906030">init</span><span style="color: #303030">=</span>/bin/sh
+</pre></div><br />
+輸入 <i>boot </i>開機完後 再到<i> /etc/inittabBB</i> 將 <i>ttyAS0</i> 那行的註解拿掉<br />
+<br />
+這樣每次開機就都有 Console 了

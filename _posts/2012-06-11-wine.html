@@ -1,0 +1,25 @@
+---
+layout: post
+title: Wine 中文支援
+date: '2012-06-11T17:33:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Ubuntu
+- Wine
+modified_time: '2012-06-11T17:33:15.323+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-6334073216369433716
+blogger_orig_url: http://trunone.blogspot.com/2012/06/wine.html
+---
+
+因為 Ubuntu 已全面採用 Unicode UTF-8<br />
+<br />
+因此如果要用 wine 去執行一些 Windows 的 Big5 編碼的中文程式<br />
+<br />
+可能會有不支援的問題<br />
+<br />
+先裝上相應的 locale:<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> sudo locale-gen zh_TW
+</pre></div><br />
+再執行 wine:<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> <span style="color: #906030">LC_ALL</span><span style="color: #303030">=</span><span style="background-color: #fff0f0">&quot;zh_TW.Big5&quot;</span> wine XXX.exe
+</pre></div>* XXX.exe 為要執行的 Windows 程式<br />

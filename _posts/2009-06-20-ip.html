@@ -1,0 +1,55 @@
+---
+layout: post
+title: 使用批次檔來切換你的IP設定
+date: '2009-06-20T20:39:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Network
+modified_time: '2011-11-01T16:47:54.892+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-7628427732108447212
+blogger_orig_url: http://trunone.blogspot.com/2009/06/ip.html
+---
+
+相信這個功能對帶著筆電到處跑的人很有用<br />
+<br />
+把下面的程式碼 用文字編輯器 存成副檔名為bat的檔案<br />
+<br />
+還有如果是中文的作業系統 那要把所有的Local Area Connection改為 區域連線 或是你要改的網卡<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">@</span><span style="color: #6ab825; font-weight: bold">ECHO</span> <span style="color: #6ab825; font-weight: bold">OFF</span>
+
+<span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">varip</span><span style="color: #d0d0d0">=</span>要設定的IP
+<span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">varsm</span><span style="color: #d0d0d0">=</span>子網路遮罩
+<span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">vargw</span><span style="color: #d0d0d0">=</span>通訊閘道
+<span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">vardns1</span><span style="color: #d0d0d0">=</span>DNS<span style="color: #3677a9">1</span>
+<span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">vardns2</span><span style="color: #d0d0d0">=</span>DNS<span style="color: #3677a9">2</span>
+
+<span style="color: #6ab825; font-weight: bold">ECHO</span> Setting IP Address and Subnet Mask
+netsh int ip <span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">address</span> name <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;Local Area Connection&quot;</span> source <span style="color: #d0d0d0">=</span> static addr <span style="color: #d0d0d0">=</span> <span style="color: #40ffff">%varip%</span> mask <span style="color: #d0d0d0">=</span> <span style="color: #40ffff">%varsm%</span>
+
+<span style="color: #6ab825; font-weight: bold">ECHO</span> Setting Gateway
+netsh int ip <span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">address</span> name <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;Local Area Connection&quot;</span> gateway <span style="color: #d0d0d0">=</span> <span style="color: #40ffff">%vargw%</span> gwmetric <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1</span>
+
+<span style="color: #6ab825; font-weight: bold">ECHO</span> Setting Primary DNS
+netsh int ip <span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">dns</span> name <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;Local Area Connection&quot;</span> source <span style="color: #d0d0d0">=</span> static addr <span style="color: #d0d0d0">=</span> <span style="color: #40ffff">%vardns1%</span>
+
+<span style="color: #6ab825; font-weight: bold">ECHO</span> Setting Secondary DNS
+netsh int ip add dns name <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;Local Area Connection&quot;</span> addr <span style="color: #d0d0d0">=</span> <span style="color: #40ffff">%vardns2%</span>
+
+<span style="color: #6ab825; font-weight: bold">pause</span>
+</pre></div><br />
+然後執行那個.bat檔就OK了<br />
+<br />
+下面是改成DHCP的版本<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">@</span><span style="color: #6ab825; font-weight: bold">ECHO</span> <span style="color: #6ab825; font-weight: bold">OFF</span>
+
+<span style="color: #6ab825; font-weight: bold">ECHO</span> Resetting IP Address and Subnet Mask <span style="color: #6ab825; font-weight: bold">For</span> DHCP
+netsh int ip <span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">address</span> name <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;Local Area Connection&quot;</span> source <span style="color: #d0d0d0">=</span> dhcp
+
+<span style="color: #6ab825; font-weight: bold">ECHO</span> Resetting DNS <span style="color: #6ab825; font-weight: bold">For</span> DHCP
+netsh int ip <span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">dns</span> name <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;Local Area Connection&quot;</span> source <span style="color: #d0d0d0">=</span> dhcp
+
+<span style="color: #6ab825; font-weight: bold">ECHO</span> Resetting Windows Internet Name Service (WINS) <span style="color: #6ab825; font-weight: bold">For</span> DHCP
+netsh int ip <span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #40ffff">wins</span> name <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;Local Area Connection&quot;</span> source <span style="color: #d0d0d0">=</span> dhcp
+
+<span style="color: #6ab825; font-weight: bold">pause</span>
+</pre></div><br />

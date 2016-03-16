@@ -1,0 +1,34 @@
+---
+layout: post
+title: 讓Ubuntu中的Firefox與mms協定關連
+date: '2011-10-12T18:46:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Firefox
+- Ubuntu
+- Internet
+modified_time: '2011-10-12T18:46:23.150+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-7662367170112468244
+blogger_orig_url: http://trunone.blogspot.com/2011/10/ubuntufirefoxmms.html
+---
+
+在網頁上常常有一些mms的連結 像是空中英語教室每天的廣播<br />
+<br />
+但是Ubuntu中的Firefox卻沒有預設將mms與播放器關連<br />
+<br />
+雖然可以複製連結到播放器中 不過總是比較不方便<br />
+<br />
+這裡有一個方法 適用於Firefox 3.6以上<br />
+<br />
+先開新分頁後 在網址列輸入<code class="syntax text">about:config</code><br />
+<br />
+在視窗中按右鍵選<code class="syntax text">New>Boolean</code><br />
+<br />
+在跳出來的對話框中輸入<code class="syntax text">network.protocol-handler.expose.mms</code><br />
+<br />
+在第二個對話框中選擇<code class="syntax text">false</code><br />
+<br />
+接下來再去點mms的連結 就會有一個可以選擇要使用軟體的視窗<br />
+<br />
+Ubuntu內建的totem就能播放mms 位置在<code class="syntax text">/usr/bin/totem</code>

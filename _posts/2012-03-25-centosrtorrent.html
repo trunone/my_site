@@ -1,0 +1,56 @@
+---
+layout: post
+title: 安裝 rtorrent (CentOS)
+date: '2012-03-25T23:20:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+modified_time: '2013-03-16T01:57:13.033+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-5509559038042667483
+blogger_orig_url: http://trunone.blogspot.com/2012/03/centosrtorrent.html
+---
+
+最近想說總不能老是玩Ubuntu 就找了套RPM系的Linux來裝<br />
+<br />
+找來找去就找上 CentOS 了 裝完後玩了一下<br />
+<br />
+發現 yum 官方支援的套件好少啊<br />
+<br />
+想來養個動物 結果發現沒我常用的 rtorrent<br />
+<br />
+網路上找的RPM也都不是最新版 只好自已DIY了<br />
+<ol><li><h2>安裝開發工具</h2></li>
+yum install gcc gcc-c++ m4 make automake libtool pkgconfig perl openssl-devel ncurses-devel
+<li><h2>抓取原始碼</h2></li>
+<a href=http://curl.haxx.se/download/>http://curl.haxx.se/download/curl-x.x.x.tar.gz</a> <a href=http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.2/>http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.2/libsigc++-x.x.x.tar.gz</a> <a href=http://libtorrent.rakshasa.no/downloads/>http://libtorrent.rakshasa.no/downloads/libtorrent-x.x.x.tar.gz</a> <a href=http://libtorrent.rakshasa.no/downloads/>http://libtorrent.rakshasa.no/downloads/rtorrent-x.x.x.tar.gz</a> x.x.x是版本號 找最新的抓
+<li><h2>解壓縮</h2></li>
+<pre class="syntax escaped bash"># tar -xvzf curl-x.x.x.tar.gz
+# tar -xvzf libsigc++-x.x.x.tar.gz
+# tar -xvzf libtorrent-x.x.x.tar.gz
+# tar -xvzf rtorrent-x.x.x.tar.gz
+</pre><li><h2>編譯與安裝curl</h2></li>
+<pre class="syntax escaped bash"># cd curl-x.x.x
+# ./configure
+# make
+# make install
+</pre><li><h2>編譯與安裝libsigc++</h2></li>
+<pre class="syntax escaped bash"># cd libsigc++-2.2.4
+# ./configure
+# make
+# make install
+</pre><li><h2>編譯與安裝libtorrent</h2></li>
+<pre class="syntax escaped bash"># export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+# cd libtorrent-0.12.5
+# rm -f scripts/{libtool,lt*}.m4
+# ./autogen.sh
+# ./configure
+# make
+# make install
+</pre><li><h2>編譯與安裝rtorrent</h2></li>
+<pre class="syntax escaped bash"># cd rtorrent-0.8.5
+# rm -f scripts/{libtool,lt*}.m4
+# ./autogen.sh
+# ./configure
+# make
+# make install
+</pre></ol>

@@ -1,0 +1,24 @@
+---
+layout: post
+title: 設定 Linux 函式庫路徑
+date: '2013-04-30T09:15:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+modified_time: '2013-05-04T14:07:17.956+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-1693523540080201346
+blogger_orig_url: http://trunone.blogspot.com/2013/04/linux_30.html
+---
+
+在 Linux 下增加程式讀取函式庫路徑的方法<br />
+<br />
+當執行時：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> <span style="color: #906030">LD_LIBRARY_PATH</span><span style="color: #303030">=</span>/path/to/custom/lib Command
+</pre></div><br />
+新增到環境變數：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> <span style="color: #007020">export </span><span style="color: #906030">LD_LIBRARY_PATH</span><span style="color: #303030">=</span>/path/to/custom/lib
+</pre></div><br />
+新增到系統設定中：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> sudo ldconfig /path/to/custom/lib/
+</pre></div>

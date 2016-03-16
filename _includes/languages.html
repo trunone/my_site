@@ -1,0 +1,5 @@
+View in:
+{% assign tongue = "en" %}
+<a {% if tongue == site.active_lang %}style="font-weight: bold;"{% endif %}" href="{% if tongue == site.default_lang %} {{site.baseurl}}{{page.url}} {% else %} {{site.baseurl}}/{{ tongue }}{{page.url}} {% endif %}">English</a> |
+{% assign tongue = "zh_TW" %}
+<a {% if tongue == site.active_lang %}style="font-weight: bold;"{% endif %}" href="{% if tongue == site.default_lang %} {{site.baseurl}}{{page.url}} {% else %} {{site.baseurl}}/{{ tongue }}{{page.url}} {% endif %}">正體中文</a>

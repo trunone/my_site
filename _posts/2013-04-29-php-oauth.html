@@ -1,0 +1,24 @@
+---
+layout: post
+title: 編譯與安裝 PHP OAuth
+date: '2013-04-29T03:12:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+modified_time: '2013-04-29T03:12:14.614+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-2644084280124842585
+blogger_orig_url: http://trunone.blogspot.com/2013/04/php-oauth.html
+---
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> sudo apt-get install php5-dev
+</pre></div><br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .3em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">%</span> wget http://pecl.php.net/get/oauth
+<span style="color: #c65d09; font-weight: bold">%</span> tar -xvzf oauth-x.x.x.tgz
+<span style="color: #c65d09; font-weight: bold">%</span> <span style="color: #007020">cd </span>oauth-x.x.x/
+<span style="color: #c65d09; font-weight: bold">%</span> phpize
+<span style="color: #c65d09; font-weight: bold">%</span> ./configure
+<span style="color: #c65d09; font-weight: bold">%</span> make 
+<span style="color: #c65d09; font-weight: bold">%</span> sudo make install
+<span style="color: #c65d09; font-weight: bold">%</span> sudo <span style="color: #007020">echo </span><span style="color: #906030">extension</span><span style="color: #303030">=</span>/usr/lib/php5/<span style="color: #303030">[</span>date<span style="color: #303030">]</span>/oauth.so &gt; /etc/php5/conf.d/oauth.ini
+</pre></div>

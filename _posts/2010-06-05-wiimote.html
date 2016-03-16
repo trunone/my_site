@@ -1,0 +1,68 @@
+---
+layout: post
+title: 把Wiimote當滑鼠用
+date: '2010-06-05T21:33:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Wii
+modified_time: '2011-11-01T16:46:24.107+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-4836132996863877186
+blogger_orig_url: http://trunone.blogspot.com/2010/06/wiimote.html
+---
+
+首先呢 先把Wiimote和電腦用藍芽連接起來<br />
+<br />
+電腦端建議用IVT的BlueSoleil<br />
+<br />
+基本上和一般藍芽的連接方式差不多<br />
+<br />
+讓Wiimote進入配對模式的方法是同時按1+2鍵<br />
+<br />
+記得Wii先不要開機 不然就會先被配對走了<br />
+<br />
+接下來抓這個程式<a href="">GlovePIE</a><br />
+<br />
+起動它以後把下面這段Script貼進去<br />
+<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">// Wiimote mouse script for Windows desktop
+// Requires a sensor bar
+
+var.ButtonFreezeTime = 250ms
+var.PointerBump = KeepDown(Pressed(wiimote.A),var.ButtonFreezeTime) or KeepDown(Pressed(wiimote.B),var.ButtonFreezeTime)
+Wiimote.Led1 = true
+
+// Mouse movement
+if wiimote.PointerVisible but not var.PointerBump then
+mouse.x = wiimote.PointerX
+mouse.y = wiimote.PointerY
+end if
+
+// Mouse Buttons
+mouse.LeftButton = Wiimote.A and KeepDown(Wiimote.PointerVisible,0.5s)
+mouse.RightButton = Wiimote.B and KeepDown(Wiimote.PointerVisible,0.5s)
+mouse.MiddleButton = Wiimote.Home and KeepDown(Wiimote.PointerVisible,0.5s)
+mouse.XButton1 = Wiimote.Minus
+mouse.XButton2 = Wiimote.Plus
+
+// Mouse Wheel
+if wiimote.Up then
+mouse.WheelUp = true
+wait 30ms
+mouse.WheelUp = false
+wait 30ms
+end if
+if wiimote.Down then
+mouse.WheelDown = true
+wait 30ms
+mouse.WheelDown = false
+wait 30ms
+end if
+</pre></div><br />
+<br />
+然後點Run 現在就可以把Wii開機 這樣Sensor Bar才有電<br />
+<br />
+不然自己買兩個紅外線LED來做也行 XD<br />
+<br />
+可以把這段Script存起來 之後要開就很方便了<br />
+<br />
+Reference:<a href="">Wiimote IR Mouse</a>

@@ -1,0 +1,28 @@
+---
+layout: post
+title: 同時燒錄 sof 與 elf 於 EPCS (DE0-Nano)
+date: '2013-04-13T14:18:00.004+08:00'
+author: Chih-En Wu
+tags:
+- Nios II
+- Quartus II
+- Altera
+- Verilog
+- Terasic
+modified_time: '2013-04-13T14:20:11.150+08:00'
+thumbnail: http://2.bp.blogspot.com/-z-HGvddhutk/UWj34QbliUI/AAAAAAAABN0/eY-n8JI5_T0/s72-c/Capture.PNG
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-133656684761976253
+blogger_orig_url: http://trunone.blogspot.com/2013/04/sof-elf-epcs-de0-nano.html
+---
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> <span style="color: #906030">$QUARTUS_INSTALL_PATH</span>/nios2eds/bin/elf2flash --input<span style="color: #303030">=</span>software.elf --output<span style="color: #303030">=</span>software.flash --epcs --verbose
+</pre></div><br />
+<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> <span style="color: #906030">$QUARTUS_INSTALL_PATH</span>/nios2eds/bin/nios2-gnutools/H-i686-pc-linux-gnu/bin/nios2-elf-objcopy -I srec -O ihex software.flash software.hex
+</pre></div><br />
+先用上面的指令將軟體的 elf 檔轉為 hex 檔<br />
+再到 Quartus II 開啟 <b>File > Convert Programming File...</b><br />
+<br />
+<a href="http://2.bp.blogspot.com/-z-HGvddhutk/UWj34QbliUI/AAAAAAAABN0/eY-n8JI5_T0/s1600/Capture.PNG" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-z-HGvddhutk/UWj34QbliUI/AAAAAAAABN0/eY-n8JI5_T0/s320/Capture.PNG" /></a><br />
+<br />
+依照上圖設定 再將轉出之 jic 檔用 Quartus II Programmer 燒錄即可

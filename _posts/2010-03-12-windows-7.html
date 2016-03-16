@@ -1,0 +1,30 @@
+---
+layout: post
+title: Windows 7登入畫面背景圖更換
+date: '2010-03-12T00:14:00.002+08:00'
+author: Chih-En Wu
+tags:
+- Windows
+modified_time: '2011-07-29T13:47:20.594+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-5089498543977738587
+blogger_orig_url: http://trunone.blogspot.com/2010/03/windows-7.html
+---
+
+Windows 7內建了更換登入畫面的功能 不需要額外安裝軟體<br />
+<br />
+首先在開始的搜尋框打regedit 打開登錄檔編輯器 找到下面這個位置<br />
+<code class="syntax text"><br />
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\Background<br />
+</code><br />
+在Background裡新增一個DWORD值 命名為OEMBackground 值設為1<br />
+<br />
+然後再去硬碟裡找到下面這個路徑<br />
+<br />
+<em>%windir%\system32\oobe\info\backgrounds<br />
+註：%windir%為Windows的安裝位置 通常是C:\Windows</em><br />
+<br />
+info和backgrounds資料夾可能都不存在 要自己新增<br />
+<br />
+接下來在裡面放命名為<code class="syntax text">backgroundDefault.jpg</code>的JPEG圖檔<br />
+<br />
+而圖檔的大小不能超過256KB 之後你就會看到你的登入畫面是你自己的圖囉！

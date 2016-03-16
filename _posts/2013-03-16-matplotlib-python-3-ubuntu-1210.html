@@ -1,0 +1,34 @@
+---
+layout: post
+title: 安裝 matplotlib (Python 3) (Ubuntu 12.10)
+date: '2013-03-16T01:54:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+- Python 3
+modified_time: '2013-03-16T01:54:12.583+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-476255551137542601
+blogger_orig_url: http://trunone.blogspot.com/2013/03/matplotlib-python-3-ubuntu-1210.html
+---
+
+由下列指令安裝：<br />
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">$ </span>sudo apt-get install python3-dev python3-pip python3-setuptools libfreetype6-dev libpng12-dev python3-pyqt4
+<span style="color: #19177C">$ </span>sudo pip-3.2 install matplotlib
+</pre></div><br />
+在要使用 matplotlib 的程式前加入：<br />
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib</span>
+matplotlib<span style="color: #666666">.</span>use(<span style="color: #BA2121">&#39;Qt4Agg&#39;</span>)
+</pre></div><br />
+<br />
+如果不想每次寫程式都多那兩行<br />
+可以把這個設定檔<br />
+<a href="http://matplotlib.org/users/customizing.html#matplotlibrc-sample">http://matplotlib.org/users/customizing.html#matplotlibrc-sample</a><br />
+放到這個路徑<br />
+<i>~/.matplotlib/matplotlibrc</i><br />
+<br />
+再將裡面的<br />
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">backend      : GTKAgg
+</pre></div>修改為<br />
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">backend      : Qt4Agg
+</pre></div>

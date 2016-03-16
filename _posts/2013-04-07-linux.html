@@ -1,0 +1,28 @@
+---
+layout: post
+title: Linux 簡易隨身碟效能測試
+date: '2013-04-07T17:37:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+modified_time: '2013-04-07T17:37:48.297+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-6778991140367060114
+blogger_orig_url: http://trunone.blogspot.com/2013/04/linux.html
+---
+
+主要是使用 Unix-like 系統中都有的 dd 指令來做測試<br />
+<br />
+讀取測試：<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #906030">$ </span>sudo dd <span style="color: #008000; font-weight: bold">if</span><span style="color: #303030">=</span>/dev/sdX# <span style="color: #906030">of</span><span style="color: #303030">=</span>/dev/null <span style="color: #906030">bs</span><span style="color: #303030">=</span>1M <span style="color: #906030">count</span><span style="color: #303030">=</span>400 <span style="color: #906030">iflag</span><span style="color: #303030">=</span>direct
+</pre></div><br />
+<b>bs=1M</b>: 以 1MB 為單位<br />
+<b>count=400</b>: 讀取 400 次<br />
+<b>iflag=direct</b>: 直接存取，不經過快取<br />
+<br />
+寫入測試：<br />
+<span style="color: red;"><b>!!!注意請使用在空的随身碟 若有重要檔案可能會被破壞!!!</b></span><br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #906030">$ </span>sudo dd <span style="color: #008000; font-weight: bold">if</span><span style="color: #303030">=</span>/dev/zero <span style="color: #906030">of</span><span style="color: #303030">=</span>/dev/sdX# <span style="color: #906030">bs</span><span style="color: #303030">=</span>1M <span style="color: #906030">count</span><span style="color: #303030">=</span>400 <span style="color: #906030">skip</span><span style="color: #303030">=</span>1000 <span style="color: #906030">oflag</span><span style="color: #303030">=</span>direct
+</pre></div><br />
+<b>if=/dev/zero</b>: 寫入 0x0，可換為 <i>/dev/urandom</i>，寫入亂數測試<br />
+<b>skip=1000</b>: 跳過開頭 1GB 的空間

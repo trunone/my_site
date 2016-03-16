@@ -1,0 +1,31 @@
+---
+layout: post
+title: 啟動 Ubuntu 12.04 休眠
+date: '2012-06-10T13:44:00.000+08:00'
+author: Chih-En Wu
+tags: 
+modified_time: '2012-06-10T13:44:29.893+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-7958277359411728966
+blogger_orig_url: http://trunone.blogspot.com/2012/06/ubuntu-1204.html
+---
+
+Ubuntu 12.04 預設並沒有啟動休眠的功能<br />
+<br />
+官方的說法是因為許多電腦休眠時會出現問題<br />
+<br />
+所以讓使用者自行決定<br />
+<br />
+先用這個指令測試休眠是否正常<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> sudo pm-hibernate
+</pre></div><br />
+能正常重開機後 新增一個檔案<br />
+<i>/etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla</i><br />
+並輸入下列內容<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">[Re-enable hibernate by default]
+Identity=unix-user:*
+Action=org.freedesktop.upower.hibernate
+ResultActive=yes
+</pre></div><br />
+重開機後休眠的選項就可以使用了<br />
+<br />
+Reference: <a href=https://help.ubuntu.com/12.04/ubuntu-help/power-hibernate.html>How do I hibernate my computer?</a>

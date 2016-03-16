@@ -1,0 +1,20 @@
+---
+layout: post
+title: ibus 無法在 skype 正常運作
+date: '2013-04-03T22:45:00.002+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+modified_time: '2013-04-03T22:45:41.283+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-6608765105926416648
+blogger_orig_url: http://trunone.blogspot.com/2013/04/ibus-skype.html
+---
+
+在 <i>~/.bashrc</i> 或 <i>~/.profile</i> 加入以下幾行<br />
+<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007020">export </span><span style="color: #906030">GTK_IM_MODULE</span><span style="color: #303030">=</span>ibus
+<span style="color: #007020">export </span><span style="color: #906030">XMODIFIERS</span><span style="color: #303030">=</span>@im<span style="color: #303030">=</span>ibus
+<span style="color: #007020">export </span><span style="color: #906030">QT_IM_MODULE</span><span style="color: #303030">=</span>ibus
+<span style="color: #007020">export </span><span style="color: #906030">XIM_PROGRAM</span><span style="color: #303030">=</span>/usr/bin/ibus-daemon
+</pre></div>

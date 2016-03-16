@@ -1,0 +1,29 @@
+---
+layout: post
+title: 安裝 Oracle JDK (Ubuntu 12.04)
+date: '2011-08-14T13:36:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+modified_time: '2013-04-07T01:28:26.660+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-761921943417289988
+blogger_orig_url: http://trunone.blogspot.com/2011/08/ubuntu-1104sun-jdk.html
+---
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> sudo add-apt-repository ppa:upubuntu-com/java
+<span style="color: #c65d09; font-weight: bold">$</span> sudo apt-get update
+<span style="color: #c65d09; font-weight: bold">$</span> sudo apt-get install oracle-java7-installer
+</pre></div>如果已經安裝過了其它的JDK 可以用下面的指令來切換<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #906030">$ </span>sudo update-alternatives --config java
+<span style="color: #906030">$ </span>sudo update-alternatives --config javac
+</pre></div><br />
+<b>UPDATE:</b><br />
+1. 下載 .tar.gz 版本的 JDK<br />
+2. 解壓到一資料夾<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #906030">$ </span>sudo tar xf jdk-*-linux-*.tar.gz -C /usr/share/jdk
+</pre></div>3. 安裝<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #906030">$ </span>sudo update-alternatives --install <span style="background-color: #fff0f0">&quot;/usr/bin/java&quot;</span> <span style="background-color: #fff0f0">&quot;java&quot;</span> <span style="background-color: #fff0f0">&quot;/usr/share/jdk/jdk{JDK_VERSION}/bin/java&quot;</span> 1
+<span style="color: #906030">$ </span>sudo update-alternatives --install <span style="background-color: #fff0f0">&quot;/usr/bin/javac&quot;</span> <span style="background-color: #fff0f0">&quot;javac&quot;</span> <span style="background-color: #fff0f0">&quot;/usr/share/jdk/jdk{JDK_VERSION}/bin/javac&quot;</span> 1
+<span style="color: #906030">$ </span>sudo update-alternatives --install <span style="background-color: #fff0f0">&quot;/usr/bin/javaws&quot;</span> <span style="background-color: #fff0f0">&quot;javaws&quot;</span> <span style="background-color: #fff0f0">&quot;/usr/share/jdk/jdk{JDK_VERSION}/bin/javaws&quot;</span> 1
+</pre></div>

@@ -1,0 +1,24 @@
+---
+layout: post
+title: 啟動 MATLAB 出現錯誤訊息 (Ubuntu 12.04)
+date: '2012-06-10T22:53:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Ubuntu
+- MATLAB
+modified_time: '2013-03-16T01:55:44.593+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-6914195156492765571
+blogger_orig_url: http://trunone.blogspot.com/2012/06/ubuntu-1204-matlab.html
+---
+
+若啟動 MATLAB 有出現下列錯誤訊息時<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">/user/local/bin/matlab: 1: /usr/local/MATLAB/R2010b/bin/util/oscheck.sh: /lib64/libc.so.6: not found
+</pre></div><br />
+請服用下列指令<br />
+<br />
+64-bit OS:<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> sudo ln -s /lib/x86_64-linux-gnu/libc-2.15.so /lib64/libc.so.6
+</pre></div><br />
+32-bit OS:<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> sudo ln -s /lib/i386-linux-gnu/libc-2.15.so /lib/libc.so.6
+</pre></div>

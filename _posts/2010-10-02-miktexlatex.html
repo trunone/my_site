@@ -1,0 +1,32 @@
+---
+layout: post
+title: 使MiKTeX支援中文(LaTeX)
+date: '2010-10-02T07:54:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Programming
+- Document
+modified_time: '2011-11-02T09:32:35.814+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-5072239336944377562
+blogger_orig_url: http://trunone.blogspot.com/2010/10/miktexlatex.html
+---
+
+將最新的MiKTeX 2.8安裝完畢後<br />
+<br />
+用Package Manager安裝cjk, cjk-font與arphic幾個package<br />
+<br />
+在要使用中文的tex中加入下列語法<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">....
+\usepackage{CJK}
+....
+\begin{document}
+\begin{CJK}{UTF8}{bsmi}
+....
+這是一個中文的測試。
+....
+\end{CJK}
+\end{document}
+</pre></div><br />
+記得中文必需要在<code class="syntax escaped plain">\begin{CJK}{UTF8}{bsmi}</code>與<code class="syntax escaped plain">\end{CJK}</code>中間<br />
+<br />
+{UTF8}可依所需編碼格式修改 要與tex檔的編碼相同

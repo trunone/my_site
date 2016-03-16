@@ -1,0 +1,19 @@
+---
+layout: post
+title: Fedora 15開機後直接進入文字模式(Shell)
+date: '2011-08-12T14:55:00.001+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Fedora
+modified_time: '2011-11-01T16:52:35.358+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-5323369735521178503
+blogger_orig_url: http://trunone.blogspot.com/2011/08/fedora-15shell.html
+---
+
+以前都是透過修改 <code class="syntax text">/etc/inittab</code><br />
+<br />
+但新版的Fedora這個檔案已經沒有作用了 改用下面這個方式<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">rm -rf /etc/systemd/system/default.target
+ln -s /lib/systemd/system/multi-user.target /etc/systemd/system/default.target
+</pre></div><br />

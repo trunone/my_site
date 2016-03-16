@@ -1,0 +1,24 @@
+---
+layout: post
+title: apache啟動時抓不到Domain Name的問題
+date: '2010-03-07T15:40:00.002+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Apache
+- Ubuntu
+modified_time: '2011-07-29T13:41:11.406+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-6996182491520746758
+blogger_orig_url: http://trunone.blogspot.com/2010/03/apachedomain-name.html
+---
+
+之前Ubuntu上的apache在啟動時老是出現這個錯誤訊息<br />
+<br />
+<pre class="syntax text">apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName</pre><br />
+雖然好像沒什麼影響 但是看了總是很礙眼 於是google了一下<br />
+<br />
+才發現原來是apache設定的問題 只要在<code class="syntax text">/etc/apache2/apache2.conf</code>中加入<br />
+<code class="syntax text">ServerName "server.name"</code><br />
+那個server.name就任你改囉<br />
+<br />
+Reference: <a href="http://ubuntuforums.org/showthread.php?t=424573">Apache error - server's fully qualified domain name [RESOLVED]</a>

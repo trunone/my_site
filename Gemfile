@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+gem 'rouge'
+gem 'kramdown'
+gem 'jekyll'
+gem 'jekyll-polyglot'
+gem 'jekyll-sitemap'
+gem 'jekyll-feed'
+gem 'jekyll-watch'

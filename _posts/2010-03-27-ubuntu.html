@@ -1,0 +1,29 @@
+---
+layout: post
+title: Ubuntu 升級發行版
+date: '2010-03-27T17:03:00.003+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+modified_time: '2012-06-11T17:35:24.872+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-4793014719175547218
+blogger_orig_url: http://trunone.blogspot.com/2010/03/ubuntu.html
+---
+
+升級的方法主要有兩種 一個是在X Window下 按 Ctrl+Alt+T 輸入：<br />
+<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> upgrade-manager -d
+</pre></div><br />
+在出現的升級管理員中應該就有新版本可以用囉<br />
+<br />
+另一個是使用Shell 先確認是否有裝 <em>update-manager-core</em> 這個套件<br />
+<br />
+再到<em> /etc/update-manager/release-upgrades</em> 這個檔案確認<br />
+<br />
+set Prompt 的部分 一般版要為 normal 長期支援版為 lts<br />
+<br />
+接下來到Shell下輸入<br />
+<br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> sudo <span style="color: #008000; font-weight: bold">do</span>-release-upgrade -d
+</pre></div>

@@ -1,0 +1,35 @@
+---
+layout: post
+title: MySQL Server的外部連線
+date: '2010-03-07T21:48:00.002+08:00'
+author: Chih-En Wu
+tags:
+- Linux
+- Ubuntu
+- MySQL
+modified_time: '2011-11-03T19:29:10.843+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-4945473583582469649
+blogger_orig_url: http://trunone.blogspot.com/2010/03/mysql-server.html
+---
+
+剛裝好的MySQL Server通常只能本機連線<br />
+<br />
+如果想從外部管理就要修改一些設定值<br />
+<br />
+這好像是基本常識 結果我搞了半天 XD<br />
+<br />
+首先修改<b>/etc/mysql/my.cnf</b><br />
+<br />
+找到bind-address這行 在前面加個#號mark起來存檔<br />
+<br />
+接下來進入MySQL的Command Line打上<br />
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">USE</span> <span style="color: #d0d0d0">mysql;</span>
+<span style="color: #6ab825; font-weight: bold">UPDATE</span> <span style="color: #6ab825; font-weight: bold">user</span> <span style="color: #6ab825; font-weight: bold">SET</span> <span style="color: #6ab825; font-weight: bold">host</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&#39;%&#39;</span> <span style="color: #6ab825; font-weight: bold">WHERE</span> <span style="color: #6ab825; font-weight: bold">host</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&#39;127.0.0.1&#39;</span><span style="color: #d0d0d0">;</span>
+</pre></div><br />
+接下來重新啟動MySQL就可以了<br />
+<br />
+不過建議從外部連入以後把%改回127.0.0.1<br />
+<br />
+然後再INSERT一筆新資料 把Host改成自己常用的IP<br />
+<br />
+這樣比較安全

@@ -1,0 +1,83 @@
+---
+layout: post
+title: locale 設定相關說明
+date: '2012-03-26T01:17:00.000+08:00'
+author: Chih-En Wu
+tags: 
+modified_time: '2012-03-26T01:17:06.379+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-4376192101727304029
+---
+
+<br />
+3. locale 相關知識<br />
+<br />
+執行這個指令時, 設定的是 LANG, 這是最沒效力的。<br />
+如果沒有安裝 locales, 預設的 LANG 通常稱為 C 或 POSIX<br />
+man page 或其他文字通常是以 en 或 en_US 顯示<br />
+<br />
+最強效的是 LC_ALL, 設定下去, 底下這些都會強制跟 LC_ALL 相同。LC_ALL 沒有預設值。<br />
+<br />
+LC_CTYPE 字元分類和處理, 一般的輸入法只要設定這個就能用<br />
+LC_NUMERIC 處理非金錢相關的數字格式<br />
+LC_TIME 處理時間、日期等<br />
+LC_COLLATE 處理字元比較和排序<br />
+LC_MONETARY 處理金錢相關的格式和符號<br />
+LC_MESSAGES 處理顯示的格式, 訊息想看中文要設定這個<br />
+LC_PAPER<br />
+LC_NAME<br />
+LC_ADDRESS<br />
+LC_TELEPHONE<br />
+LC_MEASUREMENT<br />
+LC_IDENTIFICATION<br />
+<br />
+另外還有一個 LANGUAGE<br />
+這只有少數程式會用到<br />
+<br />
+4. 範例:<br />
+<br />
+export LANG=zh_TW.UTF-8<br />
+export LC_ALL=zh_TW.UTF-8<br />
+export LC_CTYPE=zh_TW.UTF-8<br />
+<br />
+在這裡設定 LANG 和 LC_CTYPE 都是沒意義的, 因為 LC_ALL 已經設定了<br />
+<br />
+export LANG=zh_TW.BIG5<br />
+export LC_ALL=zh_TW.UTF-8<br />
+<br />
+在這裡 LANG 無效<br />
+<br />
+export LANG=zh_TW.BIG5<br />
+export LC_CTYPE=zh_TW.UTF-8<br />
+export LC_MESSAGES=zh_TW.UTF-8<br />
+<br />
+顯示輸入都是用 UTF-8, 其他的東西則是 big5<br />
+<br />
+export LANG=POSIX<br />
+export LC_CTYPE=zh_TW<br />
+<br />
+全部都是美式英文, 但可以輸入繁體中文<br />
+<br />
+export LC_MESSAGES=zh_TW<br />
+<br />
+通常設定這個之後, 軟體的介面和選單就會用中文(如果有支援的話)<br />
+例外是 openoffice, 還要設定<br />
+<br />
+export LANGUAGE=zh_TW<br />
+<br />
+<br />
+<br />
+<br />
+LC_CTYPE="zh_TW"; export LC_CTYPE<br />
+<br />
+很多人都喜歡這樣打, 其實不需要<br />
+<br />
+export LC_CTYPE="zh_TW"<br />
+<br />
+這樣就行了<br />
+<br />
+<br />
+/etc/environment 全域變數設定<br />
+<br />
+LANG=zh_TW<br />
+<br />
+為啥要設 LANG 不用 LC_ALL？因為他優先權最低，使用者要改成自己的比較方便。<br />

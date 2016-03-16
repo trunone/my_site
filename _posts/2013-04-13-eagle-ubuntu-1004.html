@@ -1,0 +1,23 @@
+---
+layout: post
+title: 執行 eagle 所需函式庫 (Ubuntu 10.04)
+date: '2013-04-13T23:48:00.000+08:00'
+author: Chih-En Wu
+tags:
+- PCB Layout
+- Linux
+- Ubuntu
+modified_time: '2013-04-13T23:48:04.627+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-5798202613222317607
+blogger_orig_url: http://trunone.blogspot.com/2013/04/eagle-ubuntu-1004.html
+---
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">$</span> wget ftp://ftp.cadsoft.de/eagle/program/6.0/eagle-lin-6.4.0.run
+<span style="color: #c65d09; font-weight: bold">$</span> sed -e <span style="background-color: #fff0f0">&#39;1,/^__DATA__$/d&#39;</span> eagle-lin-6.0.0.run &gt; eagle-lin-6.4.0.tar.bz2
+<span style="color: #c65d09; font-weight: bold">$</span> tar xvjf eagle-lin-6.4.0.tar.bz2
+<span style="color: #c65d09; font-weight: bold">$</span> <span style="color: #007020">cd </span>eagle-6.4.0/bin
+<span style="color: #c65d09; font-weight: bold">$</span> wget http://dl.dropbox.com/u/4295670/eagle_libs.tar.bz2
+<span style="color: #c65d09; font-weight: bold">$</span> tar xvjf eagle_libs.tar.bz2
+<span style="color: #c65d09; font-weight: bold">$</span> <span style="color: #007020">echo</span> <span style="background-color: #fff0f0">&#39;LD_LIBRARY_PATH=&quot;$(dirname &quot;$0&quot;)&quot; &quot;$(dirname &quot;$0&quot;)/eagle&quot; $@&#39;</span> &gt; eagle.run
+<span style="color: #c65d09; font-weight: bold">$</span> chmod +x eagle.run
+</pre></div>

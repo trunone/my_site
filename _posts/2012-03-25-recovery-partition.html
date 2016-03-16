@@ -1,0 +1,38 @@
+---
+layout: post
+title: 如何刪除還原磁區(Recovery Partition)
+date: '2012-03-25T23:06:00.000+08:00'
+author: Chih-En Wu
+tags:
+- Windows
+modified_time: '2012-03-25T23:10:44.538+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-4903203600247380392
+blogger_orig_url: http://trunone.blogspot.com/2012/03/recovery-partition.html
+---
+
+有的人買套裝PC或是筆電<br />
+<br />
+常常會發現硬碟裡有大約10GB左右的還原磁區<br />
+<br />
+但是他沒有這個需要 想刪卻刪不掉 那就白佔了硬碟的空間<br />
+<br />
+雖然現在硬碟都很大了 不過還是有點浪費<br />
+<br />
+<ol><li><h2>使用管理員權限開啟命令提示字元</h2></li>
+<li><h2>執行Diskpart</h2></li>
+輸入<b>diskpart</b>後按<b>Enter</b>
+<li><h2>掃描所有的分割區與磁碟</h2></li>
+在<b>DISKPART></b>輸入<b>rescan</b>後按<b>Enter</b>
+<li><h2>列出所有磁碟</h2></li>
+在<b>DISKPART></b>輸入<b>list disk</b>後按<b>Enter</b> 這個動作會列出所有的磁碟及它們的編號
+<li><h2>選擇含有還原磁區的磁碟</h2></li>
+在<b>DISKPART></b>輸入<b>select disk X</b> <ul><li><b>X</b>為還原磁區所在的磁碟編號 通常是<b>disk 0</b></li>
+</ul><li><h2>列出所選擇擇磁碟的所有分割區</h2></li>
+在<b>DISKPART></b>輸入<b>list partition</b>後輸入<b>Enter</b> 這個動作會列出剛所選擇的磁碟裡所有的分割區
+<li><h2>選擇要刪除的還原磁區</h2></li>
+在<b>DISKPART></b>輸入<b>select partition X</b>後輸入<b>Enter</b> <ul><li><b>X</b>為還原磁區的分割區編號 通常是最後一個 可以依容量來分辨</li>
+</ul><li><h2>刪除所選擇的分割區</h2></li>
+要非常確定前一步驟所選擇的分割區是正確的 否則失敗了就無法還原  在<b>DISKPART></b>輸入<b>delete partition</b>後輸入<b>Enter</b>
+<li><h2>重新開機</h2></li>
+</ol><br />
+這樣就刪除掉還原分割區了 接下來就是如何利用它囉

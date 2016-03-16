@@ -1,0 +1,30 @@
+---
+layout: post
+title: Rip CD to FLAC with CDex 1.51
+date: '2012-03-26T12:16:00.000+08:00'
+author: Chih-En Wu
+tags: 
+modified_time: '2012-03-26T12:16:56.080+08:00'
+blogger_id: tag:blogger.com,1999:blog-6518933078301809282.post-7739533382143226775
+---
+
+<br />
+<ol><li><h2>下載程式</h2></li>
+CDex: <a href="http://sourceforge.net/projects/cdexos/">http://sourceforge.net/projects/cdexos/</a><br />
+FLAC: <a href="http://sourceforge.net/projects/flac/">http://sourceforge.net/projects/flac/</a><br />
+下載這兩個程式的最新版本
+<li><h2>安裝程式</h2></li>
+將<b>CDex</b>安裝
+再把<b>flac.exe</b>解壓縮到任一路徑 建議在CDex的安裝路徑
+<li><h2>設定CDex</h2></li>
+<ol> <li>啟動CDex</li>
+ <li>開啟Options→Sttings</li>
+ <li>選擇<b>Encoder</b>分頁</li>
+ <li>選擇<b>External Encoder</b></li>
+ <li>在<b>Encoder path</b>選擇<b>flac.exe</b></li>
+ <li>在<b>Parameter string</b>內輸入以下內容</li>
+  -8 -o %2 -T "artist=%a" -T "title=%t" -T "album=%b" -T "date=%y" -T "tracknumber=%tn/%tt" -T "genre=%g" %1
+ <li>在<b>File Extension</b>輸入<b>flac</b></li>
+ <li>必需取消選擇<b>On-the-fly Encoding</b><li><br />
+<br />
+</ol>Now select the "Generic"-tab  Make sure that you that "None" is selected in the "ID3 Tag Version"-box or you will get files named ".flac.flac" besides the files named ".flac"  Now select the "Remote CDDB"-tab  Enter your public e-mail or any other that you don't mind getting sent in clear text over the net. (I haven't got any spam from this but you never know) freedb.org requires a e-mail address to work.  Don't forget to look at the "Filenames"-tab  Primarily at those "WAV -> MP3"- and "Recorded Tracks"-boxes so they are correct and pointing at places with free space.  Click "OK"  Ripping  Insert disk... and click the "Remote CDDB" button:  If it doesn't find the right names you have to enter them yourself.  To make a "one file per track" rip just select all tracks and click the rip to compressed audio button:   To make a "two-files-per-CD" rip press the "extract section" button:  and make sure that the whole CD is selected (it is that by default in 1.70beta2). Also set output to "Compressed Audio File (Encoded)" and select a good file name ("01.01" is not a particularly describing name) For some reason CDex doesn't  set the Album name by default.  Click OK when it is done open the cue file and edit the .cue-file. change the ".wav" to ".flac" in the line beginning with "FILE".  Please come with suggestions on how to improve this HowTo.  </ol>
